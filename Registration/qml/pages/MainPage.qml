@@ -44,13 +44,20 @@ Page {
     allowedOrientations: Orientation.All
 
     PageHeader {
+        id: pageHeader
         objectName: "pageHeader"
         title: qsTr("Регистрация")
     }
 
     Column {
-        anchors.centerIn: parent
-        spacing: 10
+        anchors {
+            top: pageHeader.bottom
+            topMargin: Theme.horizontalPageMargin
+            left: parent.left
+            leftMargin: Theme.horizontalPageMargin
+            right: parent.right
+            rightMargin: Theme.horizontalPageMargin
+        }
 
         Label {
             id: loginLabel
@@ -89,21 +96,36 @@ Page {
             width: page.width / 2
         }
 
-        TextInput {
-            id: phone
-            inputMask: "+7(000)00-00-00"
-            onTextChanged: {
-                if (errPhone.visible)
-                {
-                    errPhone.visible = false;
+        Row {
+            Item {
+                width: 25
+                height: 10//phone.height// + Theme.paddingMedium
+            }
+
+            TextInput {
+                id: phone
+                inputMask: "+7(000)00-00-00"
+                color: login.color
+                height: login.height / 2
+                verticalAlignment: Text.AlignVCenter
+                onTextChanged: {
+                    if (errPhone.visible)
+                    {
+                        errPhone.visible = false;
+                    }
                 }
             }
+        }
+
+        Item {
+            width: parent.width
+            height: Theme.paddingLarge
         }
 
         Button {
             id: submit
             text: "Зарегистрироваться"
-            anchors.topMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 var hasErrors = false;
                 if (login.text.length == 0)
