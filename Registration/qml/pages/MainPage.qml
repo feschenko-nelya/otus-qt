@@ -65,16 +65,16 @@ Page {
         }
         Label {
             id: errLogin
-            color: "#FF0000"
-            font.pixelSize: loginLabel.font.pixelSize / 2
+            color: Theme.errorColor
+            font.pixelSize: Theme.fontSizeTiny
             visible: false
             wrapMode: Text.WordWrap
-            width: page.width / 2
+            width: parent.width
         }
 
         TextField {
             id: login
-            placeholderText: "Login"
+            placeholderText: "login123"
             validator: RegExpValidator { regExp: /^[a-z0-9_-]{3,16}$/ }
             onTextChanged: {
                 if (errLogin.visible)
@@ -89,23 +89,23 @@ Page {
         }
         Label {
             id: errPhone
-            color: "#FF0000"
-            font.pixelSize: loginLabel.font.pixelSize / 2
+            color: Theme.errorColor
+            font.pixelSize: Theme.fontSizeTinyBase
             visible: false
             wrapMode: Text.WordWrap
-            width: page.width / 2
+            width: parent.width
         }
 
         Row {
             Item {
                 width: 25
-                height: 10//phone.height// + Theme.paddingMedium
+                height: 10
             }
 
             TextInput {
                 id: phone
                 inputMask: "+7(000)00-00-00"
-                color: login.color
+                color: focus ? Theme.highlightColor : Theme.primaryColor
                 height: login.height / 2
                 verticalAlignment: Text.AlignVCenter
                 onTextChanged: {
