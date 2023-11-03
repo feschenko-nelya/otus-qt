@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.auroraos.SimpleNotes
+Exec=/usr/bin/ru.auroraos.SimpleNotes
+Name=Simple notes
+Name[ru]=Простые заметки
+
+[X-Application]
+Permissions=Documents
+OrganizationName=ru.auroraos
+ApplicationName=SimpleNotes
+ExecDBus=/usr/bin/ru.auroraos.SimpleNotes
